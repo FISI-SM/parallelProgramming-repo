@@ -5,6 +5,9 @@
  Version     :
  Copyright   : Your copyright notice
  Description : Hello OpenMP World in C
+  To run:
+ 	$ gcc -fopenmp Prog02-AddVectors.c -o Prog02-AddVectors
+ 	$ ./Prog02-AddVectors
  ============================================================================
  */
 

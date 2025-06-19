@@ -5,6 +5,11 @@
  Version     :
  Copyright   : Your copyright notice
  Description : Hello OpenMP World in C
+ To run:
+ 	$ gcc -fopenmp FirstOpenMP1.c -o FirstOpenMP1
+ 	$ ./FirstOpenMP1
+ To exec in several threads:
+ 	$ export OMP_NUM_THREADS=4	
  ============================================================================
  */
 #include <omp.h>
@@ -15,19 +20,19 @@
  */
 int main(int argc, char *argv[]) {
 
-	printf("\n 01 Fuera de la region Paralela ...");
+	printf("01 Fuera de la region Paralela ...");
 
 	/* This creates a team of threads; each thread has own copy of variables  */
 	#pragma omp parallel
-	{
-		int id = omp_get_thread_num();
-		int nt = omp_get_num_threads();
+	{		
+		int nt = omp_get_num_threads(); //Numero de hilos
+		int id = omp_get_thread_num(); //Id del hilo
 
-		printf("\n Hello World from thread number %d de un total %d \n", id,
+		printf("\n Hello World from thread number %d de un total %d", id,
 				nt);
 	}
 
-	printf("\n 02 Fuera de la region Paralela ...");
+	printf("\n02 Fuera de la region Paralela ...\n");
 
 	return 0;
 }

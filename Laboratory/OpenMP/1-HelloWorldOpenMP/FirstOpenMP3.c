@@ -6,6 +6,9 @@
  Copyright   : Your copyright notice
  Description : Hello OpenMP World in C
  Indicate number of Threads 'n' in Code:
+  To run:
+  $ gcc -fopenmp FirstOpenMP3.c -o FirstOpenMP3
+  $ ./FirstOpenMP3
  ============================================================================
  */
 #include <omp.h>

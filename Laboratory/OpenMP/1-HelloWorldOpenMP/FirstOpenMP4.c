@@ -6,6 +6,9 @@
  Copyright   : Your copyright notice
  Description : Hello OpenMP World in C
  Indicate number of Threads 'n' in Code:
+   To run:
+  $ gcc -fopenmp FirstOpenMP4.c -o FirstOpenMP4
+  $ ./FirstOpenMP4
  ============================================================================
  */
 #include <omp.h>
@@ -14,7 +17,7 @@
 /**
  * Hello OpenMP World prints the number of threads and the current thread id
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]){
 
 	printf("\n 01 Fuera de la region Paralela ...\n\n");
 
@@ -25,7 +28,7 @@ int main(int argc, char *argv[]) {
 	{
 		int id = omp_get_thread_num();
 		int nt = omp_get_num_threads();
-		printf("HW from thread number %d de un total %d \n", id,	nt);
+		printf("HW from thread number %d de un total %d \n", id, nt);
 	}
 
 	printf("\n 02 Fuera de la region Paralela ...\n\n");
@@ -34,7 +37,7 @@ int main(int argc, char *argv[]) {
 	{
 		int id = omp_get_thread_num();
 		int nt = omp_get_num_threads();
-		printf("HW from thread number %d de un total %d \n", id,	nt);
+		printf("HW from thread number %d de un total %d \n", id, nt);
 	}
 	return 0;
 }

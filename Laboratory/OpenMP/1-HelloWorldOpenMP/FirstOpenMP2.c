@@ -5,9 +5,13 @@
  Version     :
  Copyright   : Your copyright notice
  Description : Hello OpenMP World in C
- For compile to use:
+ To run:
+  $ gcc -fopenmp FirstOpenMP2.c -o FirstOpenMP2
+  $ ./FirstOpenMP1
+ To compile to use:
  	 Indicate number of Threads 'n' by Enviroment Variable:
  	  $ export OMP_NUM_THREADS='n'
+
  ============================================================================
  */
 #include <omp.h>
@@ -27,12 +31,12 @@ int main (int argc, char *argv[]) {
    printf("Hello World from thread number %d\n", tid);
 
    /* The following is executed by the master thread only (tid=0) */
-   if (tid == 0)
-     {
+   if (tid == 0){
        numThreads = omp_get_num_threads();
        printf("Number of threads is %d\n", numThreads);
-     }
+   }
  }
+
  return 0;
 }
 
