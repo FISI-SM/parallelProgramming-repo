@@ -11,7 +11,6 @@ int main() {
         sum += i;
 
     double end = omp_get_wtime();
-printf("Tiempo transcurrido:  %d  segundos
-";\n", end - start);
+    printf("Tiempo transcurrido:  %d  segundos\n", end - start);
     return 0;
 }

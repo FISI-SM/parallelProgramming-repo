@@ -7,10 +7,8 @@ int main() {
     #pragma omp parallel
     {
         #pragma omp master
-printf("Ejecutado solo por el hilo maestro.\n");
-";
-
-printf("Ejecutado por todos los hilos:  %d\n", omp_get_thread_num());
+            printf("Ejecutado solo por el hilo maestro.\n");
+            printf("Ejecutado por todos los hilos:  %d\n", omp_get_thread_num());
     }
     return 0;
 }

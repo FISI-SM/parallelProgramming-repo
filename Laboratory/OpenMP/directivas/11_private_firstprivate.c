@@ -9,7 +9,7 @@ int main() {
     {
         x += omp_get_thread_num();
         #pragma omp critical
-printf("Hilo  %d  tiene x= %d\n", omp_get_thread_num(), x);
+            printf("Hilo  %d  tiene x= %d\n", omp_get_thread_num(), x);
     }
     return 0;
 }

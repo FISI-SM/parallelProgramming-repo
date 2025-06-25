@@ -9,6 +9,6 @@ int main() {
     for (int i = 0; i < 10; ++i) {
         last_val = i;
     }
-printf("Valor final de last_val:  %d\n", last_val);
+    printf("Valor final de last_val:  %d\n", last_val);
     return 0;
 }

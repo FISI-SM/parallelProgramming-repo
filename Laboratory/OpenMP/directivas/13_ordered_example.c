@@ -7,7 +7,7 @@ int main() {
     #pragma omp parallel for ordered
     for (int i = 0; i < 10; ++i) {
         #pragma omp ordered
-printf("Iteración ordenada  %d  por hilo  %d\n", i, omp_get_thread_num());
+            printf("Iteración ordenada  %d  por hilo  %d\n", i, omp_get_thread_num());
     }
     return 0;
 }
