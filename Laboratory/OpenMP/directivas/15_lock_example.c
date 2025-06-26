@@ -10,7 +10,7 @@ int main() {
     #pragma omp parallel for
     for (int i = 0; i < 10; ++i) {
         omp_set_lock(&lock);
-printf("Sección protegida por hilo  %d\n", omp_get_thread_num());
+        printf("Sección protegida por hilo  %d\n", omp_get_thread_num());
         omp_unset_lock(&lock);
     }
 

@@ -13,30 +13,29 @@
 
 int main() {
 
+    int x = 10;
 
-
-    int x = 3;
     omp_set_num_threads(4);
-    #pragma omp parallel for private(x)
-    for ( int i=0;i<20;++i) {
-            x += i ; // x inicialmente vale 3
-            printf("X=%d \n", x);
-    }       
-    
-
-    printf("Fuera de la RP %d  \n", x); // x==3
-
-
-    x = 10;
-
-    omp_set_num_threads(10);
     #pragma omp parallel private(x)
     {
-        x += omp_get_thread_num();
-        printf("Hilo  %d  tiene x= %d\n", omp_get_thread_num(), x);
+        int tid = omp_get_thread_num();
+        x = tid * 2;
+        printf("Thread %d: x = %d\n", tid, x);
     }
 
-    printf("\n x = %d\n",x);
+    printf("\nOutside parallel: x = %d\n", x);
+
+
+    int y = 10;
+
+    omp_set_num_threads(10);
+    #pragma omp parallel firstprivate(y)
+    {
+        y += omp_get_thread_num();
+        printf("Hilo  %d  tiene y= %d\n", omp_get_thread_num(), y);
+    }
+
+    printf("\nOutside parallel: y = %d\n", y);
 
     return 0;
 }
