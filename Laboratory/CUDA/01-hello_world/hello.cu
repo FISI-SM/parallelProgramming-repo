@@ -1,5 +1,10 @@
+/*
+ * Compile:  nvcc -o hello hello.cu 
+ * Run:      ./hello <number of thread blocks> <number of threads>
+ */
+
 #include <stdio.h>
-#include <cuda.h>
+#include <cuda.h> // llamada a la libreria cuda
 
 __global__ void Hello(void) {
    printf("Hello from thread %d!\n", threadIdx.x);
@@ -15,7 +20,7 @@ int main(int argc, char* argv[]) {
 
    thread_count = strtol(argv[1], NULL, 10);  
 
-   Hello<<<1, thread_count>>>();  
+   Hello<<<1, thread_count>>>();  // kernell<<<num_blocks, threads_per_block>>>();
 
    cudaError_t err = cudaGetLastError();  // Verifica errores en el kernel
    if (err != cudaSuccess) {

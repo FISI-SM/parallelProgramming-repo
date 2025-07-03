@@ -4,7 +4,8 @@
  *           on a system with compute capability >= 3.0
  *
  * Compile:  nvcc -arch=sm_30 -o cud_vec_add cuda_vec_add.cu 
- *              arch can be >= 30
+ *              # arch can be >= 30 or use -arch=native
+ *
  * Run:      ./cuda_vec_add <n> <blk_ct> <th_per_blk> <i|g>
  *              n is the vector length.  
  *              blk_ct is the number of thread blocks

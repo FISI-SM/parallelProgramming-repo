@@ -4,8 +4,8 @@
  *           prints a message.  This version can start multiple
  *           thread blocks.
  *
- * Compile:  nvcc -o hello hello.cu 
- * Run:      ./hello <number of thread blocks> <number of threads>
+ * Compile:  nvcc -o cuda_hello1 cuda_hello1.cu 
+ * Run:      ./cuda_hello1 <number of thread blocks> <number of threads>
  *
  * Input:    None
  * Output:   A message from each thread.
