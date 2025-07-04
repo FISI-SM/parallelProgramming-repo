@@ -1,6 +1,6 @@
 /*
  * Compile:  nvcc -o hello hello.cu 
- * Run:      ./hello <number of thread blocks> <number of threads>
+ * Run:      ./hello <number of threads>
  */
 
 #include <stdio.h>
