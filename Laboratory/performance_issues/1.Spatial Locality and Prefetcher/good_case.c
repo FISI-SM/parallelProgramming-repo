@@ -1,3 +1,13 @@
+/*
+WINDOWS
+==========
+To compile:
+gcc good_case.c -o good_case.exe
+
+To run:
+./good_case.exe
+
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
