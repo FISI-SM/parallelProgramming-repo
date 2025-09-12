@@ -12,28 +12,27 @@
  lo mismo, el primero no recibirá de nadie y el ultimo no enviara a nadie, esto se
  puede especificar mediante condiciones que filtren el rango del proceso.
  Compile Command:
-    $ mpiCC -g -Wall -o <CodeName> <CodeName.cpp>
-    $ mpiexec  ./<CodeName>
-    $ mpiexec -n 10 ./<CodeName>
+    $ mpiCC -g -Wall -o SendMessage02 SendMessage02.c
+    $ mpiexec  ./SendMessage02
+    $ mpiexec --oversubscribe -n 10 ./SendMessage02
  ============================================================================
  */
 
 #include "mpi.h"
 #include <stdio.h>
 
-int main(int argc, char *argv[])
-{
-    int rank, size, contador;
+int main(int argc, char *argv[]){
+    int rank, size, msg_rcv, msg_send;
     MPI_Status estado;
 
     MPI_Init(&argc, &argv);               // Inicializamos la comunicacion de los procesos
     MPI_Comm_size(MPI_COMM_WORLD, &size); // Obtenemos el numero total de hebras
     MPI_Comm_rank(MPI_COMM_WORLD, &rank); // Obtenemos el valor de nuestro identificador
 
-    if (rank == 0)
-    {
+    msg_send = rank;
+    if (rank == 0){
 
-        MPI_Send(&rank // referencia al vector de elementos a enviar
+        MPI_Send(&msg_send // referencia al vector de elementos a enviar
                  ,
                  1 // tamaño del vector a enviar
                  ,
@@ -44,10 +43,8 @@ int main(int argc, char *argv[])
                  0 // etiqueta
                  ,
                  MPI_COMM_WORLD); // Comunicador por el que se manda
-    }
-    else
-    {
-        MPI_Recv(&contador // Referencia al vector donde se almacenara lo recibido
+    }else{
+        MPI_Recv(&msg_rcv // Referencia al vector donde se almacenara lo recibido
                  ,
                  1 // tamaño del vector a recibir
                  ,
@@ -61,10 +58,10 @@ int main(int argc, char *argv[])
                  ,
                  &estado); // estructura informativa del estado
 
-        printf("Soy el proceso %d y he recibido %d\n", rank, contador);
-        contador++;
+        printf("Soy el proceso %d y he recibido %d\n", rank, msg_rcv);
+        msg_rcv++;
         if (rank != size - 1)
-            MPI_Send(&contador, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
+            MPI_Send(&msg_rcv, 1, MPI_INT, rank + 1, 0, MPI_COMM_WORLD);
     }
 
     // Terminamos la ejecucion de las hebras, despues de esto solo existira

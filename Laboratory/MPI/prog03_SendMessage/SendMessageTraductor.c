@@ -7,9 +7,9 @@
  Description : Traduce los los numeros en días de la semana. i.e "0 es Monday"
  deberan ingresar 8 como numero de proceso
  Compile Command:
-	$ mpiCC -g -Wall -o <CodeName> <CodeName.cpp>
-	$ mpiexec  ./<CodeName>
-	$ mpiexec -n 8 ./<CodeName>
+	$ mpiCC -g -Wall -o SendMessageTraductor SendMessageTraductor.c
+	$ mpiexec  ./SendMessageTraductor
+	$ mpiexec -n 8 ./SendMessageTraductor
  ============================================================================
  */
 

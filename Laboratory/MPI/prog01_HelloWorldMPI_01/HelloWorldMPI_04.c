@@ -1,3 +1,18 @@
+/*
+ ============================================================================
+ Name        : HelloWorldMPI_04.c
+ Author      : Herminio Paucar
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World using MPI
+ Compile Command:
+    $ mpicc -g -Wall -o HelloWorldMPI_04 HelloWorldMPI_04.c
+    $ mpiexec  ./HelloWorldMPI_04
+    $ mpiexec -n 4 ./HelloWorldMPI_04
+    $ mpiexec --oversubscribe -n 10 ./HelloWorldMPI_04    
+ ============================================================================
+ */
+
 #include <mpi.h>
 #include <stdio.h>
 
@@ -27,3 +42,5 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
+
