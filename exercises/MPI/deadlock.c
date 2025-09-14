@@ -6,8 +6,8 @@
  * Usage:  deadlock
  *         Run on two nodes
  *         You will need to stop the deadlocked program with <ctrl>\
- * Author: Roslyn Leibensperger  Last revised: 8/30/95 RYL
  * ------------------------------------------------------------------------ */
+
 #include <stdio.h>
 #include "mpi.h"
 #define MSGLEN 2048         /* length of message in elements */

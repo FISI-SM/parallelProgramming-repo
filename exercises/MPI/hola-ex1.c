@@ -1,10 +1,8 @@
-/* 
- * hello.ex1.c 
+/* *  
  * Parallel version using MPI calls
  * Modified from basic version so that workers send back 
  * a message to the master, who prints out a message 
  * for each worker 
- * RLF 10/11/95 
 */
 
 #include <stddef.h>
