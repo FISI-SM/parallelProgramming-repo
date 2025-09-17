@@ -1,33 +1,33 @@
 /******************************************************************************
-* FILE: mpi_latency.c
-* DESCRIPTION:  
-*   MPI Latency Timing Program - C Version
-*   In this example code, a MPI communication timing test is performed.
-*   MPI task 0 will send "reps" number of 1 byte messages to MPI task 1,
-*   waiting for a reply between each rep. Before and after timings are made 
-*   for each rep and an average calculated when completed.
-* AUTHOR: Blaise Barney
-* LAST REVISED: 04/13/05
+* ARCHIVO: latencia_mpi.c
+* DESCRIPCION:
+*   Programa de Medicion de Latencia MPI - Version C
+*   En este codigo de ejemplo, se realiza una prueba de tiempo de comunicacion MPI.
+*   La tarea MPI 0 enviara "repeticiones" numero de mensajes de 1 byte a la tarea MPI 1,
+*   esperando una respuesta entre cada repeticion. Se toman tiempos antes y despues
+*   para cada repeticion y se calcula un promedio cuando se completa.
+* AUTOR: Blaise Barney
+* ULTIMA REVISION: 04/13/05
 ******************************************************************************/
 #include "mpi.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
 #include <time.h>
-#define	NUMBER_REPS	1000
+#define	NUMERO_REPETICIONES	1000
 
 int main (int argc, char *argv[])
 {
-int reps,                   /* number of samples per test */
-    tag,                    /* MPI message tag parameter */
-    numtasks,               /* number of MPI tasks */
-    rank,                   /* my MPI task number */
-    dest, source,           /* send/receive task designators */
-    avgT,                   /* average time per rep in microseconds */
-    rc,                     /* return code */
+int repeticiones,           /* numero de muestras por prueba */
+    etiqueta,               /* parametro de etiqueta de mensaje MPI */
+    numero_tareas,          /* numero de tareas MPI */
+    rango,                  /* mi numero de tarea MPI */
+    destino, origen,        /* designadores de tarea envio/recibo */
+    promedio_T,             /* tiempo promedio por repeticion en microsegundos */
+    codigo_retorno,         /* codigo de retorno */
     n;
-double T1, T2,              /* start/end times per rep */
-    sumT,                   /* sum of all reps times */
+double T1, T2,              /* tiempos de inicio/fin por repeticion */
+    suma_T,                 /* suma de todos los tiempos de repeticiones */
     deltaT;                 /* time for one rep */
 char msg;                   /* buffer containing 1 byte message */
 MPI_Status status;          /* MPI receive routine parameter */
