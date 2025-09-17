@@ -5,16 +5,12 @@ Se considerará la correcta interpretación y abordaje de cada uno de ellos.
 
 **Repositorio de código:** [https://github.com/FISI-SM/parallelProgramming-repo/tree/main/exercises/MPI](https://github.com/FISI-SM/parallelProgramming-repo/tree/main/exercises/MPI)
 
----
-
 ## Ejercicio 1: Combinación de Mensajes utilizando Tags
 
 **Archivo de Consulta:** [`comunicacion_basica.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/comunicacion_basica.c)
 **Archivo de Respuesta:** `comunicacion_basica_solucion.c`
 
 **Descripción:** Una aplicación puede utilizar el parámetro tag en las funciones send y receive para distinguir mensajes. Utilice el programa [`comunicacion_basica.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/comunicacion_basica.c) y modifícalo para que el maestro envíe dos mensajes a cada esclavo, utilizando diferentes tags. Haga que cada esclavo reciba los mensajes en orden inverso, utilizando las tags y luego responda al maestro como en el archivo original.
-
----
 
 ## Ejercicio 2: Convertir un código serial en paralelo
 
@@ -24,8 +20,6 @@ Se considerará la correcta interpretación y abordaje de cada uno de ellos.
 
 **Descripción:** El programa [`aproximacion_pi.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/aproximacion_pi.c) calcula el valor de π usando una aproximación integral. Modifique este algoritmo para una versión paralela utilizando el enfoque SPMD.
 
----
-
 ## Ejercicio 3: Comunicación no bloqueante vs bloqueante
 
 **Archivo de Consulta:** [`bloqueo_mutuo.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/bloqueo_mutuo.c)
@@ -33,11 +27,10 @@ Se considerará la correcta interpretación y abordaje de cada uno de ellos.
 
 **Descripción:** Compile el programa [`bloqueo_mutuo.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/bloqueo_mutuo.c), especifique dos nodos a ser utilizados y ejecute el programa. El programa mostrará algunas líneas en la pantalla y luego se colgará. Es necesario finalizar el programa matando el proceso (Control+C). Observe el programa [`bloqueo_mutuo.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/bloqueo_mutuo.c), ¿es capaz de identificar y entender por qué se cuelga? Corrija el programa para que pueda finalizarse, sustituyendo la comunicación bloqueante por la no bloqueante.
 
----
-
 ## Ejercicio 4: Método de los mínimos cuadrados
 
 **Archivos de Consulta:**
+
 - [`minimos_cuadrados.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/minimos_cuadrados.c)
 - [`pausa_personalizada.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/pausa_personalizada.c)
 - [`minimos_cuadrados_serial.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/minimos_cuadrados_serial.c)
@@ -58,6 +51,7 @@ Este ejercicio presenta varias oportunidades de paralelización, especialmente e
 3. Una versión serial del programa está presentada en [`minimos_cuadrados_serial.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/minimos_cuadrados_serial.c).
 
 4. En caso de que se utilice la función [`pausa_personalizada.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/pausa_personalizada.c), la forma correcta de compilar es:
+
    ```bash
    mpicc minimos_cuadrados.c pausa_personalizada.o -o nombre_programa
    ```
@@ -75,15 +69,15 @@ Este ejercicio presenta varias oportunidades de paralelización, especialmente e
 **Nota:** Es necesario utilizar la opción `-lm` en la compilación.
 **Sugerencia:** Combine todos los ejercicios en un único archivo.
 
----
-
 ## Ejercicio 5: Práctica de Comunicación Colectiva
 
 **Archivos de Consulta:**
+
 - [`comunicacion_colectiva.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/comunicacion_colectiva.c)
 - [`semilla.seed`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/semilla.seed)
 
 **Archivos de Respuesta:**
+
 - `comunicacion_colectiva_solucion.c`
 - [`datos_salida.data`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/datos_salida.data)
 
@@ -110,11 +104,10 @@ Este ejercicio presenta varias oportunidades de paralelización, especialmente e
    - `semilla.seed` a `123456` para C
 7. Verifique la exactitud de su trabajo comparando la salida del programa con el archivo [`datos_salida.data`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/datos_salida.data) para C.
 
----
-
 ## Ejercicio 6: Práctica de Comunicación Punto a Punto
 
 **Archivos de Consulta:**
+
 - [`latencia_mpi.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/latencia_mpi.c)
 - [`ancho_banda_mpi.c`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/ancho_banda_mpi.c)
 
@@ -133,13 +126,7 @@ En el segundo experimento, se determinará el ancho de banda de la comunicación
 
 **Obs.:** Para mensajes muy largos, disminuya el número de repeticiones; de lo contrario, el proceso demorará mucho en ejecutarse.
 
----
-
 ## Archivos auxiliares disponibles
 
 - [`ex1.c.orig`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/ex1.c.orig) - Archivo original de respaldo
 - [`ex1_c.mak`](https://github.com/FISI-SM/parallelProgramming-repo/blob/main/exercises/MPI/ex1_c.mak) - Makefile para compilación
-
----
-
-*Todos los archivos de código fuente han sido traducidos al español para facilitar la comprensión y evitar búsquedas directas en internet.*
