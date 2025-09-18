@@ -35,3 +35,5 @@ core
 # Kernel modules
 *.ko
 
+# Ignorar archivos compilados de Erlang
+*.beam
