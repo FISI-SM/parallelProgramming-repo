@@ -17,11 +17,10 @@
 #include <stdio.h>  // Para printf()
 #include <stdlib.h> // Para atoi()
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
+  
   // Verifica que se pase el argumento de precisión
-  if (argc < 2)
-  {
+  if (argc < 2){
     fprintf(stderr, "Uso: %s <precision>\n", argv[0]);
     exit(1);
   }
@@ -29,8 +28,7 @@ int main(int argc, char *argv[])
   // Obtiene la cantidad de divisiones (mayor n → mayor precisión)
   int n = atoi(argv[1]);
 
-  if (n <= 0)
-  {
+  if (n <= 0){
     fprintf(stderr, "Error: la precision debe ser > 0\n");
     exit(1);
   }
