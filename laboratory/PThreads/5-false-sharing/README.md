@@ -15,7 +15,7 @@ Este tipo de errores es difícil de detectar, pero tiene un gran impacto en prog
 En la versión optimizada se introduce un **padding** (relleno) entre las variables `x` e `y`, asegurando que:
 - Cada campo reside en líneas de caché distintas.
 - No hay interferencia entre los hilos.
-- Se elimina el false sharing, mejorando significativamente el rendimiento.
+- Se elimina el false sharing, mejorando significativamente el rendimiento, i.e **run in lower time.**  
 
 ## Relación con Programación Paralela 🔗
 Este caso es paradigmático en el diseño de estructuras de datos paralelas. Evitar el false sharing es esencial para lograr una paralelización efectiva, especialmente en arquitecturas con muchos núcleos. Se alinea con la enseñanza de Pacheco sobre minimizar la **contención en memoria compartida**.
