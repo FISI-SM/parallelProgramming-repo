@@ -37,3 +37,8 @@ core
 
 # Ignorar archivos compilados de Erlang
 *.beam
+
+# Ignore image overweight
+*.ppm
+*.pgm
+

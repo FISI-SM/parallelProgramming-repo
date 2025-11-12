@@ -1,8 +1,12 @@
 /*******************************************************
+  * Download images files from: https://u.pcloud.link/publink/show?code=3O7ctalK
+  *  - image0.ppm
+  *  - image2.ppm
   * Para probar con la versión en paralelo con N hilos
   * debes definir la constante durante la compilación
   * gracias a la opción -D:
   * gcc principal.c -otest -DPARALLEL = N -fopenmp -Wall
+  * 
 ********************************************************/
 
 #include <stdio.h>
