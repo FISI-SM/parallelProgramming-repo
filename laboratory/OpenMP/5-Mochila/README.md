@@ -2,10 +2,13 @@
 
 ## *Misión: Operación "Carga Inteligente"*
 
-### 📜 Historia narrativa
+Eres parte del equipo de logística avanzada de la Base Científica Andina (BCA), ubicada en una zona remota de los Andes donde las condiciones extremas dificultan el transporte de suministros.
 
-Eres parte del equipo de logística avanzada de la **Base Científica
-Andina (BCA)**...
+Un dron autónomo de apoyo —el CondorX-17— debe transportar una carga de objetos esenciales en una misión crítica para sobrevivencia e investigación. Sin embargo, el dron tiene una capacidad limitada, y entre los suministros disponibles (medicinas, baterías, módulos electrónicos, herramientas, sensores, etc.) debes seleccionar aquellos que maximicen el beneficio científico y operativo, sin exceder el peso máximo permitido.
+
+El sistema de planificación de carga está siendo actualizado para aprovechar procesamiento paralelo, y tú eres el ingeniero responsable de implementar el módulo de decisión usando OpenMP.
+
+Tu misión es desarrollar un programa en C que lea archivos de datos de carga, resuelva el problema de la mochila 0/1 y aproveche múltiples hilos para acelerar la planificación.
 
 ## 📂 Formato de entrada
 
@@ -18,7 +21,7 @@ Andina (BCA)**...
 
 ## 📈 Diagrama de flujo -- Programación Dinámica (DP)
 
-``` mermaid
+``` 
 flowchart TD
     A[Inicio] --> B[Leer archivo]
     B --> C[Leer capacidad y objetos]
