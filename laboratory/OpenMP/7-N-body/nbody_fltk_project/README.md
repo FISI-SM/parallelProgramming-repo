@@ -1,66 +1,68 @@
-
 # Visualización del problema de N-cuerpos con FLTK
 
-Este proyecto implementa una simulación bidimensional simple del problema de N-cuerpos (N-body) con gravitación newtoniana y la visualiza usando la biblioteca gráfica FLTK.
+Este proyecto implementa una simulación bidimensional del problema de N‑cuerpos con gravitación newtoniana y la visualiza usando la biblioteca gráfica FLTK.  
+Todo el contenido matemático ha sido adaptado para que sea **100% compatible con GitHub Markdown**, sin depender de LaTeX.
 
 ---
 
-## 1. Teoría básica del problema de N-cuerpos
+## 1. Teoría básica del problema de N‑cuerpos
 
 ### 1.1. Formulación física
 
-El problema de N-cuerpos consiste en determinar el movimiento de \(N\) partículas que interactúan entre sí mediante fuerzas gravitacionales.
+El problema de N‑cuerpos consiste en determinar el movimiento de N partículas que interactúan entre sí mediante fuerzas gravitacionales.
 
-Para cada partícula \(i\):
+Para cada partícula i:
 
-- Masa: \(m_i\)
-- Posición: \(\mathbf{s}_i(t) = (x_i(t), y_i(t))\)
-- Velocidad: \(\mathbf{v}_i(t) = (v_{x,i}(t), v_{y,i}(t))\)
+- **Masa:** m_i  
+- **Posición:** s_i(t) = (x_i(t), y_i(t))  
+- **Velocidad:** v_i(t) = (v_x,i(t), v_y,i(t))
 
-La fuerza gravitacional sobre \(i\) debida a otra partícula \(k\) viene dada por la ley de gravitación universal de Newton:
+### Fuerza gravitacional
 
-\[
-\mathbf{F}_{ik} = -G \frac{m_i m_k}{r_{ik}^3} (\mathbf{s}_i - \mathbf{s}_k)
-\]
+La fuerza ejercida sobre la partícula i por la partícula k es:
+
+F_ik = - G * (m_i * m_k) / r_ik^3 * (s_i - s_k)
 
 donde:
 
-- \(G\) es la constante de gravitación universal,
-- \(\mathbf{s}_i - \mathbf{s}_k\) es el vector que une a \(k\) con \(i\),
-- \(r_{ik} = \|\mathbf{s}_i - \mathbf{s}_k\|\) es la distancia entre las partículas \(i\) y \(k\).
+- G es la constante de gravitación universal  
+- r_ik es la distancia entre las partículas i y k  
+- s_i - s_k es el vector que une a ambas partículas  
 
-La fuerza total sobre la partícula \(i\) es:
+### Fuerza total
 
-\[
-\mathbf{F}_i = \sum_{\substack{k=1 \\ k \neq i}}^{N} \mathbf{F}_{ik}.
-\]
+F_i = suma(k != i) de F_ik
 
-Aplicando la segunda ley de Newton:
+### Segunda ley de Newton
 
-\[
-m_i\, \mathbf{a}_i = \mathbf{F}_i \quad \Rightarrow \quad \mathbf{a}_i = \frac{\mathbf{F}_i}{m_i}.
-\]
+m_i * a_i = F_i  
+=>  
+a_i = F_i / m_i
 
-### 1.2. Discretización (método de Euler)
+---
 
-El método utilizado en el proyecto es Euler explícito:
+## 1.2. Discretización (método de Euler)
 
-\[
-\mathbf{s}_i(t + \Delta t) = \mathbf{s}_i(t) + \Delta t\, \mathbf{v}_i(t)
-\]
+El integrador utilizado es Euler explícito.
 
-\[
-\mathbf{v}_i(t + \Delta t) = \mathbf{v}_i(t) + \Delta t\, \mathbf{a}_i(t)
-\]
+Actualización de posición:
 
-Es simple pero no conserva bien la energía para integraciones largas.
+s_i(t + dt) = s_i(t) + dt * v_i(t)
 
-### 1.3. Complejidad
+Actualización de velocidad:
 
-Cada paso calcula todas las interacciones \(i \leftrightarrow k\); esto implica:
+v_i(t + dt) = v_i(t) + dt * a_i(t)
 
-- Complejidad por paso: \(O(N^2)\).
-- Complejidad total con \(T\) pasos: \(O(TN^2)\).
+Este método es simple pero puede generar errores de energía en simulaciones largas.
+
+---
+
+## 1.3. Complejidad computacional
+
+Para cada paso se evalúan todas las interacciones entre pares de partículas:
+
+Complejidad por paso: O(N^2)  
+Complejidad total: O(T * N^2)
 
 ---
 
@@ -84,35 +86,30 @@ nbody_fltk_project/
 ## 3. Instalación de FLTK
 
 ### Linux (Ubuntu / Debian)
-
-```bash
+```
 sudo apt update
 sudo apt install libfltk1.3-dev
 ```
 
-Comprobar:
-
-```bash
+Ver versión:
+```
 fltk-config --version
 ```
 
 ### Windows (MSYS2 MinGW 64-bit)
-
-```bash
+```
 pacman -Syu
 pacman -S --needed base-devel mingw-w64-x86_64-toolchain
 pacman -S mingw-w64-x86_64-fltk
 ```
 
-Comprobar:
-
-```bash
+Verificar instalación:
+```
 which fltk-config
 ```
 
 ### macOS (Homebrew)
-
-```bash
+```
 brew install fltk
 ```
 
@@ -120,45 +117,49 @@ brew install fltk
 
 ## 4. Compilación y ejecución
 
-Desde la carpeta del proyecto:
-
-```bash
+Compilar:
+```
 make
+```
+
+Ejecutar:
+```
 make run
 ```
 
 Ejecutar con parámetros:
-
-```bash
+```
 ./nbody_fltk [n_particulas] [delta_t]
 ```
 
 Ejemplos:
-
-```bash
+```
 ./nbody_fltk 20
 ./nbody_fltk 30 0.005
 ```
 
 Limpiar:
-
-```bash
+```
 make clean
 ```
 
 ---
 
-## 5. Notas
+## 5. Notas importantes
 
-- El integrador es Euler explícito (simple pero no estable a largo plazo).
-- Las posiciones se escalan automáticamente a la ventana.
-- Las condiciones iniciales alternan las velocidades en el eje Y.
+- El integrador es Euler explícito.  
+- Las posiciones se escalan automáticamente a la ventana.  
+- Las condiciones iniciales alternan las velocidades.  
 
 ---
 
-## 6. Extensiones posibles
+## 6. Extensiones sugeridas
 
-- Integradores de mayor orden (RK4, Verlet).
-- Barnes–Hut para optimizar a \(O(N \log N)\).
-- Botones para pausar, reiniciar o cambiar parámetros.
-- Trayectorias de partículas.
+- Integradores más precisos (RK4, Verlet)  
+- Algoritmo Barnes–Hut para mejorar de O(N^2) a O(N log N)  
+- Botones de control (pausa, reinicio)  
+- Visualización de trayectorias  
+
+---
+
+Archivo generado con compatibilidad total para GitHub.
