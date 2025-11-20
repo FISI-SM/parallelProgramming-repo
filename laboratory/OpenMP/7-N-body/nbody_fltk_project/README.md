@@ -1,3 +1,4 @@
+
 # Visualización del problema de N-cuerpos con FLTK
 
 Este proyecto implementa una simulación bidimensional simple del problema de N-cuerpos (N-body) con gravitación newtoniana y la visualiza usando la biblioteca gráfica FLTK.
@@ -19,7 +20,7 @@ Para cada partícula \(i\):
 La fuerza gravitacional sobre \(i\) debida a otra partícula \(k\) viene dada por la ley de gravitación universal de Newton:
 
 \[
-\mathbf{F}_{ik} = -G rac{m_i m_k}{r_{ik}^3} (\mathbf{s}_i - \mathbf{s}_k)
+\mathbf{F}_{ik} = -G \frac{m_i m_k}{r_{ik}^3} (\mathbf{s}_i - \mathbf{s}_k)
 \]
 
 donde:
@@ -31,14 +32,13 @@ donde:
 La fuerza total sobre la partícula \(i\) es:
 
 \[
-\mathbf{F}_i = \sum_{\substack{k=1 \ k 
-e i}}^{N} \mathbf{F}_{ik}.
+\mathbf{F}_i = \sum_{\substack{k=1 \\ k \neq i}}^{N} \mathbf{F}_{ik}.
 \]
 
 Aplicando la segunda ley de Newton:
 
 \[
-m_i \mathbf{a}_i = \mathbf{F}_i \quad \Rightarrow \quad \mathbf{a}_i = rac{\mathbf{F}_i}{m_i}.
+m_i\, \mathbf{a}_i = \mathbf{F}_i \quad \Rightarrow \quad \mathbf{a}_i = \frac{\mathbf{F}_i}{m_i}.
 \]
 
 ### 1.2. Discretización (método de Euler)
@@ -46,11 +46,11 @@ m_i \mathbf{a}_i = \mathbf{F}_i \quad \Rightarrow \quad \mathbf{a}_i = rac{\mat
 El método utilizado en el proyecto es Euler explícito:
 
 \[
-\mathbf{s}_i(t + \Delta t) = \mathbf{s}_i(t) + \Delta t \, \mathbf{v}_i(t)
+\mathbf{s}_i(t + \Delta t) = \mathbf{s}_i(t) + \Delta t\, \mathbf{v}_i(t)
 \]
 
 \[
-\mathbf{v}_i(t + \Delta t) = \mathbf{v}_i(t) + \Delta t \, \mathbf{a}_i(t)
+\mathbf{v}_i(t + \Delta t) = \mathbf{v}_i(t) + \Delta t\, \mathbf{a}_i(t)
 \]
 
 Es simple pero no conserva bien la energía para integraciones largas.
