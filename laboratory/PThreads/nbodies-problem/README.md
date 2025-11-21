@@ -68,6 +68,22 @@ g++ main.cpp -o nbody.exe -lglfw3 -lglew32 -lopengl32 -lpthread
 nbody.exe
 ```
 
+### 1. Instala GLFW y GLEW desde MSYS2
+
+Debes usar los paquetes precompilados de MSYS2 (los únicos compatibles con MinGW-w64).
+
+Ejecuta en tu terminal MINGW64:
+
+```bash
+pacman -Syu          # Actualiza todo
+pacman -S mingw-w64-x86_64-glfw
+pacman -S mingw-w64-x86_64-glew
+pacman -S mingw-w64-x86_64-glm    # opcional
+```
+
+
+
+
 ---
 
 ## 📂 Estructura del proyecto
